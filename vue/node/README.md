@@ -40,3 +40,24 @@ https://blog.csdn.net/fqq_5280/article/details/86562488
 cnpm i webpack-cli --save
 
 webpack --config
+
+
+TypeError: Cannot read property 'parseComponent' of undefined
+
+cnpm i vue-template-compiler --save
+
+vue-loader was used without the corresponding plugin. Make sure to include VueLoaderPlugin in your webpack config.
+
+cnpm uninstall vue-loader --save
+cnpm install vue-loader --save
+
+. 在webpack.config.js中加入
+
+
+https://blog.csdn.net/cominglately/article/details/80555210?utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-1.control&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-1.control
+
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+    plugins: [
+        // make sure to include the plugin for the magic
+        new VueLoaderPlugin()
+    ],
