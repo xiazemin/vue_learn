@@ -1,0 +1,67 @@
+<html>
+    <head >
+        <script src="../vue.js"></script> 
+        <style>
+            #test,#testfade{
+                background-color: red;
+                border: green 1px;
+            }
+            .v-enter, .v-leave{
+                opacity:0;
+            } 
+            .v-enter-active, .v-leave-active{
+                transition:opacity 1s;
+            } 
+            .v-enter-to,.v-leave-to{
+                opacity:1;
+            } 
+
+            @keyframes bounce{
+                0% {
+                 transform: scale(0);
+                }
+                50% {
+                   transform: scale(10);
+                }
+                70% {
+                    transform: scale(20);
+                }
+                100% {
+                   transform: scale(1);
+                }
+            }
+
+            .fade-enter.active{
+                animation: bounce 1s;
+            }
+            .fade-leave.active {
+                animation: bounce 2s reverse;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="msg">
+            <button @click="isShow=!isShow">点我</button>
+            <transition name="fade">          
+                 <h1 id="testfade" v-show="isShow">
+                {{message}}
+                 </h1>
+            </transition>
+
+            <transition >          
+                <div id="test" v-show="isShow">
+               {{message}}
+              </div>
+           </transition>
+        </div>
+        <script>
+            const vm=new Vue({
+                el:"#msg",
+                data:{
+                    message:"xiazemin",
+                    isShow:true
+                }
+            })
+        </script>
+    </body>
+</html>

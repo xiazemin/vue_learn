@@ -1,0 +1,53 @@
+<html>
+    <head ><script src="../vue.js"></script> </head>
+    <head ><script src="../vue-router.js"></script> </head>
+    <body>
+        <div id="msg">
+            {{message}}
+            <router-link to="/home">aaa</router-link>
+            <router-view></router-view>
+        </div>
+        <script>
+           const index={
+               template:`
+               <p> 1  index component
+                <router-link to="/home/child">cccc</router-link>
+                <router-view></router-view>
+                </p>
+               `
+           }
+
+           const child={
+               template:`
+               <p> 2 ... child component
+                {{$route.params.id}}
+                </p>`
+           }
+            const router = new VueRouter({
+                routes:[
+                {   path:"/",
+                    redirect:"/home"},
+                    {
+                        path:"/home",
+                        component:index,
+                        children:[ 
+                            {
+                                path:"child/:id",
+                                component:child
+                            }
+                        ]
+                    }
+                    
+                ]
+            }
+            )
+            const vm=new Vue({
+                el:"#msg",
+                data:{
+                    message:"xiazemin"
+                },
+                router:router
+            })
+        </script>
+    </body>
+</html>

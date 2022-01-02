@@ -1,0 +1,56 @@
+<html>
+    <head ><script src="../vue.js"></script> </head>
+    <body>
+        <div id="msg">
+            {{message}}
+        </div>
+        <div id="img">
+            <img v-bind:src="imgSrc" v-bind:title="imgTitle">
+        </div>
+        <div id="model">
+            <input type="text" v-model="model">
+            <textarea v-model="textarea"></textarea>
+            <p> {{textarea}}</p>
+            <select v-model="select">
+                <option value="1">北京</option>
+                <option value="2">上海</option>
+            </select>
+            <p>{{select}}</p>
+            <button v-on:click="clickFun">点我</button>
+            <a @click="jump" href="http://www.baidu.com">跳转</a>
+        </div>
+        <script>
+            const vm=new Vue({
+                el:"#msg",
+                data:{
+                    message:"xiazemin"
+                }
+            })
+            const vm1=new Vue({
+                el:"#img",
+                data:{
+                   "imgSrc":"../img/girl.jpeg",
+                   "imgTitle":"图片"
+                }
+            })
+            const vm2=new Vue({
+                el:"#model",
+                data:{
+                    "model":"hello model",
+                    "textarea":"请输入待绑定内容",
+                    "select":"选择"
+                },
+                methods:{
+                    clickFun(){
+                        //this 都指向vm
+                        this.textarea=this.textarea+",点了"
+                    },
+                    jump(e){
+                        e.preventDefault()
+                        alert(1);
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
