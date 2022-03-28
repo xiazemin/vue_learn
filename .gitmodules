@@ -1,0 +1,6 @@
+[submodule "quill/Quill-Operational-Transform"]
+	path = quill/Quill-Operational-Transform
+	url = https://github.com/Dev1an/Quill-Operational-Transform
+[submodule "quill/quill-sharedb-cursors"]
+	path = quill/quill-sharedb-cursors
+	url = https://github.com/pedrosanta/quill-sharedb-cursors
